@@ -1,6 +1,12 @@
 #include "monty.h"
 
 #define SIZE 254
+/**
+ * main - entry point
+ * @argc: number of arguments
+ * @argv: opcode file
+ * Return: 0
+ */
 int main(int argc, char **argv)
 {
 	char buffer[SIZE];
@@ -28,7 +34,9 @@ int main(int argc, char **argv)
 
 		if (op != NULL && op[0] != '#')
 		{
-			void (*func)(stack_t **, unsigned int) = getInstructionFunc(op);
+			void (*func)(stack_t **stack, unsigned int line_num) =
+				getInstructionFunc(op);
+
 			if (func != NULL)
 				func(&stack, line_num);
 			else
@@ -44,20 +52,24 @@ int main(int argc, char **argv)
 		fclose(fd);
 		return (0);
 }
-            
 
-void (*getInstructionFunc(char *op))(stack_t **, unsigned int)
+/**
+ * getInstructionFunc - select instruction to perform
+ * @op: opcode entered
+ * Return: pointer to the fucntion to be executed
+ */
+void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
 {
-	int i;
-	instruction_t instructions[] = {
-		{"push", m_push},
-		{"pall", m_pall},
-		{NULL, NULL}
-	};
-	for (i = 0; instructions[i].opcode != NULL; i++)
-	{
-		if (strcmp(instructions[i].opcode, op) == 0)
-			return (instructions[i].f);
-	}
-	return (NULL);
+        int i;
+        instruction_t instructions[] = {
+                {"push", m_push},
+                {"pall", m_pall},
+                {NULL, NULL}
+        };
+        for (i = 0; instructions[i].opcode != NULL; i++)
+        {
+                if (strcmp(instructions[i].opcode, op) == 0)
+                        return (instructions[i].f);
+        }
+        return (NULL);
 }

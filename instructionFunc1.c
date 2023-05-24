@@ -35,3 +35,14 @@ void m_add(stack_t **stack, unsigned int line_num)
 	after->n = res;
 	free(current);
 }
+/**
+ * m_nop - function used a a placeholder instruction that doesn't anything
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of line
+ * Return: Void
+ */
+void m_nop(stack_t **stack, unsigned int line_num)
+{
+	(void)stack;
+	(void)line_num;
+}

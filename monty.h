@@ -49,7 +49,7 @@ void m_pop(stack_t **stack, unsigned int line_num);
 void m_swap(stack_t **stack, unsigned int line_num);
 void m_add(stack_t **stack, unsigned int line_num);
 void m_nop(stack_t **stack, unsigned int line_num);
-void m_nop(stack_t **stack, unsigned int line_num);
+void m_sub(stack_t **stack, unsigned int line_num);
 void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num);
 void free_stack(stack_t *stack);
 int arg_push(char *arg, unsigned int line_num);

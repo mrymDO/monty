@@ -49,3 +49,24 @@ void m_pall(stack_t **stack, unsigned int line_num)
 		current = current->next;
 	}
 }
+/**
+ * m_pint - print top value of the stack
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of line
+ * Return: void
+ */
+void m_pint(stack_t **stack, unsigned int line_num)
+{
+	stack_t *temp;
+
+	(void)line_num;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	temp = *stack;
+
+	printf("%d\n", temp->n);
+}

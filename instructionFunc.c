@@ -91,4 +91,38 @@ void m_pop(stack_t **stack, unsigned int line_num)
 		(*stack)->prev = NULL;
 	free(pop_node);
 }
+/**
+ * m_swap - swap positions of the top two elements on the stack
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of line
+ * Return: void
+ */
+void m_swap(stack_t **stack, unsigned int line_num)
+{
+	stack_t *current, *after;
+	int len = 0;
+	int temp = 0;
+
+	if (*stack != NULL)
+	{
+		current = *stack;
+		while (current != NULL)
+		{
+			len++;
+			current = current->next;
+		}
+	}
+	if (len < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	current = *stack;
+	after = (*stack)->next;
+
+	temp = current->n;
+	current->n = after->n;
+	after->n = temp;
+}
+
 

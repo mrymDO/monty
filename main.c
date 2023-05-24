@@ -111,6 +111,7 @@ void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
 		{"pall", m_pall},
 		{"pint", m_pint},
 		{"pop", m_pop},
+		{"swap", m_swap},
 		{NULL, NULL}
 	};
 	for (i = 0; instructions[i].opcode != NULL; i++)

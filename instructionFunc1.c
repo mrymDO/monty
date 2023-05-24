@@ -1,5 +1,10 @@
 #include "monty.h"
-
+/**
+ * m_add - add two top element of the doubly linked  list int the stack
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of lines
+ * Return: void
+ */
 void m_add(stack_t **stack, unsigned int line_num)
 {
 	stack_t *current, *after;

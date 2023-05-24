@@ -35,7 +35,6 @@ int main(int argc, char **argv)
 		{
 			void (*func)(stack_t **stack, unsigned int line_num) =
 				getInstructionFunc(op);
-
 			if (func != NULL)
 				func(&stack, line_num);
 			else
@@ -45,16 +44,18 @@ int main(int argc, char **argv)
 				free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
-		}
-
-		line_num++;
+		} line_num++;
 	}
-
 		fclose(fd);
 		free_stack(stack);
 		return (0);
 }
-
+/**
+ * arg_tok - parse the line read in the buffer
+ * @read_op: the line read
+ * @line_num: number of line
+ * Return: token which  is the instruction to be executed
+ */
 char *arg_tok(char *read_op, unsigned int line_num)
 {
 	char *opcode, *arg;
@@ -76,10 +77,16 @@ char *arg_tok(char *read_op, unsigned int line_num)
 	}
 	return (opcode);
 }
-
+/**
+ * arg_push - convert string to digit after checking all char are numbers
+ * @arg: the string to be converted
+ * @line_num: number of line
+ * Return: the number converted
+ */
 int arg_push(char *arg, unsigned int line_num)
 {
 	unsigned int i;
+
 	for (i = 0; i < strlen(arg); i++)
 	{
 		if (!isdigit(arg[i]))

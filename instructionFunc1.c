@@ -102,7 +102,7 @@ void m_div(stack_t **stack, unsigned int line_num)
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
-	else if (*stack == 0)
+	else if (current == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_num);
 		exit(EXIT_FAILURE);

@@ -59,8 +59,6 @@ void m_pint(stack_t **stack, unsigned int line_num)
 {
 	stack_t *temp;
 
-	(void)line_num;
-
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);

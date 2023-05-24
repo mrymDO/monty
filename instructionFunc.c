@@ -70,3 +70,25 @@ void m_pint(stack_t **stack, unsigned int line_num)
 
 	printf("%d\n", temp->n);
 }
+/**
+ * m_pop - remove the top element from the stack
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of line
+ * Return: void
+ */
+void m_pop(stack_t **stack, unsigned int line_num)
+{
+	stack_t *pop_node;
+
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	pop_node = *stack;
+	*stack = pop_node->next;
+	if (*stack != NULL)
+		(*stack)->prev = NULL;
+	free(pop_node);
+}
+

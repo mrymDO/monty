@@ -47,6 +47,6 @@ void m_pall(stack_t **stack, unsigned int line_number);
 void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num);
 void free_stack(stack_t *stack);
 int arg_push(char *arg, unsigned int line_num);
-char *arg_tok(stack_t **stack, char *read_op, unsigned int line_num);
+char *arg_tok(char *read_op, unsigned int line_num);
 
 #endif

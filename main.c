@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 
 	while (fgets(buffer, sizeof(buffer), fd) != NULL)
 	{
-		op = arg_tok(&stack, buffer, line_num);
+		op = arg_tok(buffer, line_num);
 		if (op != NULL && op[0] != '#')
 		{
 			void (*func)(stack_t **stack, unsigned int line_num) =
@@ -55,11 +55,9 @@ int main(int argc, char **argv)
 		return (0);
 }
 
-char *arg_tok(stack_t **stack, char *read_op, unsigned int line_num)
+char *arg_tok(char *read_op, unsigned int line_num)
 {
 	char *opcode, *arg;
-
-	(void)stack;
 
 	opcode = strtok(read_op, " \t\n");
 	if (opcode == NULL)
@@ -90,7 +88,7 @@ int arg_push(char *arg, unsigned int line_num)
 			exit(EXIT_FAILURE);
 		}
 	}
-	return atoi(arg);
+	return (atoi(arg));
 }
 /**
  * getInstructionFunc - select instruction to perform
@@ -99,18 +97,19 @@ int arg_push(char *arg, unsigned int line_num)
  */
 void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
 {
-        size_t i;
-        instruction_t instructions[] = {
-                {"push", m_push},
-                {"pall", m_pall},
-                {NULL, NULL}
-        };
-        for (i = 0; instructions[i].opcode != NULL; i++)
-        {
-                if (strcmp(instructions[i].opcode, op) == 0)
-                        return (instructions[i].f);
-        }
-        return (NULL);
+	size_t i;
+
+	instruction_t instructions[] = {
+		{"push", m_push},
+		{"pall", m_pall},
+		{NULL, NULL}
+	};
+	for (i = 0; instructions[i].opcode != NULL; i++)
+	{
+		if (strcmp(instructions[i].opcode, op) == 0)
+			return (instructions[i].f);
+	}
+	return (NULL);
 }
 
 /**

@@ -9,6 +9,7 @@
  */
 int main(int argc, char **argv)
 {
+	FILE *fd;
 	char buffer[SIZE];
 	char *op;
 	unsigned int line_num = 1;
@@ -29,9 +30,7 @@ int main(int argc, char **argv)
 
 	while (fgets(buffer, sizeof(buffer), fd) != NULL)
 	{
-		op = strtok(buffer, " \t\n");
-		arg = strtok(NULL, " \t\n");
-
+		op = arg_tok(&stack, buffer, line_num);
 		if (op != NULL && op[0] != '#')
 		{
 			void (*func)(stack_t **stack, unsigned int line_num) =
@@ -42,6 +41,8 @@ int main(int argc, char **argv)
 			else
 			{
 				fprintf(stderr, "L%d: unknown instruction %s\n", line_num, op);
+				fclose(fd);
+				free_stack(stack);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -50,9 +51,47 @@ int main(int argc, char **argv)
 	}
 
 		fclose(fd);
+		free_stack(stack);
 		return (0);
 }
 
+char *arg_tok(stack_t **stack, char *read_op, unsigned int line_num)
+{
+	char *opcode, *arg;
+
+	(void)stack;
+
+	opcode = strtok(read_op, " \t\n");
+	if (opcode == NULL)
+		return (NULL);
+
+	if (strcmp(opcode, "push") == 0)
+	{
+		arg = strtok(NULL, " \t\n");
+		if (arg != NULL)
+			val_arg = arg_push(arg, line_num);
+		else
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
+		}
+	}
+	return (opcode);
+}
+
+int arg_push(char *arg, unsigned int line_num)
+{
+	unsigned int i;
+	for (i = 0; i < strlen(arg); i++)
+	{
+		if (!isdigit(arg[i]))
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", line_num);
+			exit(EXIT_FAILURE);
+		}
+	}
+	return atoi(arg);
+}
 /**
  * getInstructionFunc - select instruction to perform
  * @op: opcode entered
@@ -60,7 +99,7 @@ int main(int argc, char **argv)
  */
 void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
 {
-        int i;
+        size_t i;
         instruction_t instructions[] = {
                 {"push", m_push},
                 {"pall", m_pall},
@@ -72,4 +111,23 @@ void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
                         return (instructions[i].f);
         }
         return (NULL);
+}
+
+/**
+ * free_stack - free the doubly linked list
+ * @stack: pointer to the doubly linked list
+ * Return: void
+ *
+ */
+void free_stack(stack_t *stack)
+{
+	stack_t *current = stack;
+	stack_t *temp;
+
+	while (current != NULL)
+	{
+		temp = current->next;
+		free(current);
+		current = temp;
+	}
 }

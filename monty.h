@@ -4,9 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 FILE *fd;
-char *arg;
+int val_arg;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -23,6 +25,7 @@ typedef struct stack_s
 	struct stack_s *prev;
 	struct stack_s *next;
 } stack_t;
+
 
 /**
  * struct instruction_s - opcode and its function
@@ -42,5 +45,8 @@ typedef struct instruction_s
 void m_push(stack_t **stack, unsigned int line_number);
 void m_pall(stack_t **stack, unsigned int line_number);
 void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num);
+void free_stack(stack_t *stack);
+int arg_push(char *arg, unsigned int line_num);
+char *arg_tok(stack_t **stack, char *read_op, unsigned int line_num);
 
 #endif

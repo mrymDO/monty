@@ -7,28 +7,22 @@
  */
 void m_push(stack_t **stack, unsigned int line_num)
 {
-	int val;
-	stack_t *top;
+	stack_t *new_node;
 
-	if (arg == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer", line_num);
-		exit(EXIT_FAILURE);
-	}
-	val = atoi(arg);
+	(void)line_num;
 
-	top = malloc(sizeof(stack_t));
-	if (top == NULL)
+	new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
 	{
 		fprintf(stderr, "Memory allocation failed\n");
 		exit(EXIT_FAILURE);
 	}
-	top->n = val;
-	top->prev = NULL;
-	top->next = *stack;
+	new_node->n = val_arg;
+	new_node->prev = NULL;
+	new_node->next = *stack;
 	if (*stack != NULL)
-		(*stack)->prev = top;
-	*stack = top;
+		(*stack)->prev = new_node;
+	*stack = new_node;
 }
 
 /**
@@ -37,9 +31,11 @@ void m_push(stack_t **stack, unsigned int line_num)
  * @line_num: number of lines
  */
 
-void m_pall(stack_t **stack, __attribute__ ((unused))unsigned int line_num)
+void m_pall(stack_t **stack, unsigned int line_num)
 {
 	stack_t *current;
+
+	(void)line_num;
 
 
 	if (*stack == NULL)

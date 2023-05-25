@@ -70,3 +70,23 @@ void m_pchar(stack_t **stack, unsigned int line_num)
 	}
 	printf("%c\n", h->n);
 }
+
+/**
+ * m_pstr - prints the contents of a stack_t stack as a string
+ * @stack: stack given by main
+ * @line_num: line counter for error messages
+ * Return: nothing
+ */
+
+void m_pstr(stack_t **stack, unsigned int line_num __attribute__((unused)))
+{
+	stack_t *tmp = (*stack);
+
+	while (tmp && tmp->n != 0 && (tmp->n > 0 && tmp->n <= 127))
+	{
+		printf("%c", tmp->n);
+		tmp = tmp->next;
+	}
+
+	printf("\n");
+}

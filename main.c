@@ -87,17 +87,34 @@ char *arg_tok(char *read_op, unsigned int line_num)
  */
 int arg_push(char *arg, unsigned int line_num)
 {
-	unsigned int i;
+	unsigned int i = 0;
+	int val;
 
-	for (i = 0; i < strlen(arg); i++)
+	if (arg[0] == '-')
 	{
-		if (!isdigit(arg[i]))
+		for (i = 1; i < strlen(arg); i++)
 		{
-			fprintf(stderr, "L%d: usage: push integer\n", line_num);
-			exit(EXIT_FAILURE);
+			if (!isdigit(arg[i]))
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_num);
+				exit(EXIT_FAILURE);
+			}
 		}
+		val = atoi(arg);
+		return (-val);
 	}
-	return (atoi(arg));
+	else
+	{
+		for (i = 0; i < strlen(arg); i++)
+		{
+			if (!isdigit(arg[i]))
+			{
+				fprintf(stderr, "L%d: usage: push integer\n", line_num);
+				exit(EXIT_FAILURE);
+			}
+		}
+		return(atoi(arg));
+	}
 }
 /**
  * getInstructionFunc - select instruction to perform

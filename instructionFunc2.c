@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <ctype.h>
 
 /**
  * m_mod - add two top element of the doubly linked  list int the stack

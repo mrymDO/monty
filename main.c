@@ -113,7 +113,7 @@ int arg_push(char *arg, unsigned int line_num)
 				exit(EXIT_FAILURE);
 			}
 		}
-		return(atoi(arg));
+		return (atoi(arg));
 	}
 }
 /**

@@ -52,18 +52,6 @@ void m_mod(stack_t **stack, unsigned int line_num)
 
 void m_pchar(stack_t **stack, unsigned int line_num)
 {
-	stack_t *current;
-	int len = 0;
-
-	if (*stack != NULL)
-	{
-		current = *stack;
-		while (current != NULL)
-		{
-			len++;
-			current = current->next;
-		}
-	}
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);

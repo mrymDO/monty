@@ -43,3 +43,45 @@ void m_mod(stack_t **stack, unsigned int line_num)
 	free(current);
 }
 
+/**
+ * m_pchar - prints the char at the top of the stack, followed by a new line.
+ * @stack: pointer to the doubly linked list
+ * @line_num: number of lines
+ * Return: void
+ */
+
+void m_pchar(stack_t **stack, unsigned int line_num)
+{
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	if (isascii((*stack)->n) == 0)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->n);
+}
+
+/**
+ * m_pstr - prints the contents of a stack_t stack as a string
+ * @stack: stack given by main
+ * @line_num: line counter for error messages
+ * Return: nothing
+ */
+
+void m_pstr(stack_t **stack, unsigned int line_num __attribute__((unused)))
+{
+	stack_t *current = *stack;
+
+	while (current)
+	{
+		if (current->n <= 0 || current->n > 127)
+			break;
+		putchar((char) current->n);
+		current = current->next;
+	}
+	putchar('\n');
+}

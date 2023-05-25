@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int val_arg;
+
 #define SIZE 254
 /**
  * main - entry point
@@ -118,6 +120,8 @@ void (*getInstructionFunc(char *op))(stack_t **stack, unsigned int line_num)
 		{"div", m_div},
 		{"mul", m_mul},
 		{"mod", m_mod},
+		{"pchar", m_pchar},
+		{"pstr", m_pstr},
 		{NULL, NULL}
 	};
 	for (i = 0; instructions[i].opcode != NULL; i++)

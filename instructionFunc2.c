@@ -59,11 +59,13 @@ void m_pchar(stack_t **stack, unsigned int line_num)
 	if (!h)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	if (h->n > 127 || h->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", h->n);

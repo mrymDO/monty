@@ -34,7 +34,7 @@ void m_mod(stack_t **stack, unsigned int line_num)
 	}
 	current = *stack;
 	after = (*stack)->next;
-	res = (current->n % after->n);
+	res = (after->n % current->n);
 
 	*stack = after;
 	if (*stack != NULL)

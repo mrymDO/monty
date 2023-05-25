@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int val_arg;
+
 #define SIZE 254
 /**
  * main - entry point

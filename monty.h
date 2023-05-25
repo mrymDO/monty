@@ -7,8 +7,8 @@
 #include <string.h>
 #include <ctype.h>
 
-FILE *fd;
-int val_arg;
+
+extern int val_arg;
 
 
 /**

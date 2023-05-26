@@ -403,7 +403,9 @@ School
 julien@ubuntu:~/monty$ 
 ```
 
-### 13) 13. rotl
+### 13) 13. rotl 
+
+> Not handled!
 
 Implement the `rotl` opcode.
 
@@ -455,6 +457,8 @@ julien@ubuntu:~/monty$
 
 ### 14) 14. rotr
 
+> Not handled!
+
 Implement the `rotr` opcode.
 
 **The rotr opcode**
@@ -465,6 +469,8 @@ The last element of the stack becomes the top element of the stack
 - `rotr` never fails
 
 ### 15) 15. stack, queue
+
+> Not handled!
 
 Implement the `stack` and `queue` opcodes.
 
@@ -577,4 +583,9 @@ julien@ubuntu:~/monty/bf$ bf 1003-mul.bf
 julien@ubuntu:~/monty/bf$ 
 ```
 
-### 20) 
+<br>
+<br>
+
+## Authors
+
+This project was made by [@mrymDO](https://github.com/mrymDO) and [@s-maarouf](https://github.com/s-maarouf)

@@ -524,7 +524,7 @@ julien@ubuntu:~/monty$ ./monty bytecodes/47.m
 julien@ubuntu:~/monty$ 
 ```
 
-### 16) 16. Brainf*ck
+### 16) [16. Brainf*ck](https://github.com/mrymDO/monty/blob/master/bf/1000-school.bf)
 
 Write a Brainf*ck script that prints `School`, followed by a new line.
 
@@ -538,7 +538,7 @@ School
 julien@ubuntu:~/monty/bf$ 
 ```
 
-### 17) 17. Add two digits
+### 17) [17. Add two digits](https://github.com/mrymDO/monty/blob/master/bf/1001-add.bf)
 
 Add two digits given by the user.
 
@@ -551,7 +551,7 @@ julien@ubuntu:~/monty/bf$ bf ./1001-add.bf
 9julien@ubuntu:~/monty/bf$
 ```
 
-### 18) 18. Multiplication
+### 18) [18. Multiplication](https://github.com/mrymDO/monty/blob/master/bf/1002-mul.bf)
 
 Multiply two digits given by the user.
 
@@ -564,7 +564,7 @@ julien@ubuntu:~/monty/bf$ bf 1002-mul.bf
 8julien@ubuntu:~/monty/bf$
 ```
 
-### 19) 19. Multiplication level up
+### 19) [19. Multiplication level up](https://github.com/mrymDO/monty/blob/master/bf/1003-mul.bf)
 
 Multiply two digits given by the user.
 
